@@ -30,22 +30,24 @@ then
 echo "Here is the Quadratic Formula format: ax^2 + bx + c = 0"
 echo "Please enter a,b,c:"
 read numA
-# Check if the number A is equal to 0
-# if [ "numA" == "0" ]
-# then
-# repeat2="true"
-# else
-# repeat2="false"
-# # 2.1 Check if number a is 0
-# while [ "$repeat2" == true ]
-# do
-# if [ "$numA" -ne "0" ]
-# repeat2="false"
-# else
-# echo "Number a must not be 0, please enter another a:"
-# read numA
-# fi
-# done
+# 2.1 Check if number a is equal 0
+if [ "$numA" == 0 ]
+then
+repeat2="true"
+else
+repeat2="false"
+fi
+
+while [ "$repeat2" == true ]
+do
+if [ "$numA" -ne 0 ]
+then
+repeat2="false"
+else
+echo "Number a must not be 0, please enter another a:"
+read numA
+fi
+done
 
 read numB
 read numC
