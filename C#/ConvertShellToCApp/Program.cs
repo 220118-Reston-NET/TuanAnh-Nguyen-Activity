@@ -1,4 +1,5 @@
 ﻿using DataFunction;
+using Data2Function;
 
 Console.Clear();
 Console.WriteLine("Welcome to programming!");
@@ -84,24 +85,28 @@ while (repeat == true)
       {
         Console.WriteLine("What do you want to buy today?");
         string item = Console.ReadLine();
-        Data.AddItemToCart(item);
+        // Data.AddItemToCart(item);
+        Data2.AddItemToCart(item);
       }
       else if (userInput2 == 2)
       {
         Console.WriteLine("Here are all item(s) you have in my cart:");
-        Data.DisplayCart();
+        // Data.DisplayCart();
+        Data2.DisplayCart();
       }
       else if (userInput2 == 3)
       {
         Console.WriteLine("Which item do you want to remove from your cart");
         string item = Console.ReadLine();
-        Data.RemoveItemFromCart(item);
+        // Data.RemoveItemFromCart(item);
+        Data2.RemoveItemFromCart(item);
       }
       else if (userInput2 == 4)
       {
         Console.WriteLine("Which item do you want to look for from my cart");
         string item = Console.ReadLine();
-        Data.SearchItemFromCart(item);
+        // Data.SearchItemFromCart(item);
+        Data2.SearchItemFromCart(item);
       }
       else if (userInput2 == 0)
       {

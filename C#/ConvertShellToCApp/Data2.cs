@@ -1,14 +1,22 @@
-//Using List Collection to solve the activity Day 3
-namespace DataFunction
+//Using dictionary to solve Activity Day 3
+namespace Data2Function
 {
-  public class Data
+  public class Data2
   {
-    public static List<string> _shoppingCart = new List<string>();
+    public static Dictionary<string, int> _shoppingCart = new Dictionary<string, int>();
 
     public static void AddItemToCart(string item)
     {
-      _shoppingCart.Add(item);
-      Console.WriteLine($"You just added {item} successfully to your cart");
+      if (_shoppingCart.ContainsKey(item))
+      {
+        _shoppingCart[item] += 1;
+        Console.WriteLine($"You just add one more {item} to your cart!");
+      }
+      else
+      {
+        _shoppingCart.Add(item, 1);
+        Console.WriteLine($"You just added {item} successfully to your cart");
+      }
     }
 
     public static void DisplayCart()
@@ -19,32 +27,24 @@ namespace DataFunction
       }
       else
       {
-        for (int i = 0; i < _shoppingCart.Count; i++)
+        foreach (var item in _shoppingCart)
         {
-          Console.WriteLine($"- {_shoppingCart[i]}");
+          Console.WriteLine($"{item.Key} - Quantity: {item.Value}");
         }
-        Console.WriteLine($"You have {_shoppingCart.Count} item(s) in your cart!");
       }
     }
 
     public static void RemoveItemFromCart(string item)
     {
-      if (_shoppingCart.Contains(item))
+      if (_shoppingCart.ContainsKey(item))
       {
-        for (int i = 0; i < _shoppingCart.Count; i++)
-        {
-          if (_shoppingCart[i] == item)
-          {
-            _shoppingCart.RemoveAt(i);
-          }
-        }
+        _shoppingCart.Remove(item);
         Console.WriteLine($"We removed all {item} from your cart!");
       }
       else
       {
         Console.WriteLine("You don't have this item in your cart!");
       }
-
     }
 
     public static void SearchItemFromCart(string item)
@@ -55,9 +55,9 @@ namespace DataFunction
       }
       else
       {
-        if (_shoppingCart.Contains(item))
+        if (_shoppingCart.ContainsKey(item))
         {
-          Console.WriteLine("You have this item in your cart!");
+          Console.WriteLine($"You have {_shoppingCart[item]} of {item} in your cart!");
         }
         else
         {
