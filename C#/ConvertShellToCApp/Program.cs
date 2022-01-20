@@ -1,5 +1,6 @@
 ﻿using DataFunction;
 using Data2Function;
+using SerializeFunction;
 
 Console.Clear();
 Console.WriteLine("Welcome to programming!");
@@ -86,27 +87,35 @@ while (repeat == true)
         Console.WriteLine("What do you want to buy today?");
         string item = Console.ReadLine();
         // Data.AddItemToCart(item);
-        Data2.AddItemToCart(item);
+        // Data2.AddItemToCart(item);
+
+        Serialize.AddNewDataToFile(item);
       }
       else if (userInput2 == 2)
       {
         Console.WriteLine("Here are all item(s) you have in my cart:");
         // Data.DisplayCart();
-        Data2.DisplayCart();
+        // Data2.DisplayCart();
+
+        Serialize.DisplayData();
       }
       else if (userInput2 == 3)
       {
         Console.WriteLine("Which item do you want to remove from your cart");
         string item = Console.ReadLine();
         // Data.RemoveItemFromCart(item);
-        Data2.RemoveItemFromCart(item);
+        // Data2.RemoveItemFromCart(item);
+
+        Serialize.RemoveData(item);
       }
       else if (userInput2 == 4)
       {
         Console.WriteLine("Which item do you want to look for from my cart");
         string item = Console.ReadLine();
         // Data.SearchItemFromCart(item);
-        Data2.SearchItemFromCart(item);
+        // Data2.SearchItemFromCart(item);
+
+        Serialize.SearchData(item);
       }
       else if (userInput2 == 0)
       {

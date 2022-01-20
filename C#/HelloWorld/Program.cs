@@ -2,6 +2,7 @@
 using CarFuntion;
 using CollectionFunction;
 using ConversionFunction;
+using SerializationFunction;
 
 // Console.WriteLine("Hello, World!");
 
@@ -79,3 +80,5 @@ Conversion.ConversionMain();
 // Conversion._num = 101;
 // Console.WriteLine(conv1.GiveMeNumber());
 // Console.WriteLine(conv2.GiveMeNumber());
+
+Serialization.SerialMain();
