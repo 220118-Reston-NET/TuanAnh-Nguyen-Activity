@@ -1,4 +1,6 @@
-﻿Console.Clear();
+﻿using DataFunction;
+
+Console.Clear();
 Console.WriteLine("Welcome to programming!");
 Console.WriteLine("Please tell me your name:");
 string name = Console.ReadLine();
@@ -9,6 +11,7 @@ while (repeat == true)
 {
   Console.WriteLine("[1] - Add three numbers");
   Console.WriteLine("[2] - Solve x in the Quadratic Formula");
+  Console.WriteLine("[3] - Shopping Cart(Day3)");
   Console.WriteLine("[0] - Exit");
   int userInput = Convert.ToInt32(Console.ReadLine());
 
@@ -60,6 +63,58 @@ while (repeat == true)
     Console.WriteLine("Press enter to continue...");
     Console.ReadLine();
   }
+  //START Day 3 Activity
+  else if (userInput == 3)
+  {
+    bool repeatMenu2 = true;
+    Console.Clear();
+    Console.WriteLine($"Hi {name}, welcome to our online shopping!");
+    Console.WriteLine("What do you want to do today?");
+
+    while (repeatMenu2 == true)
+    {
+      Console.WriteLine("[1] - Add item to my cart");
+      Console.WriteLine("[2] - Display all items I have in my cart");
+      Console.WriteLine("[3] - Remove item from my cart");
+      Console.WriteLine("[4] - Search item from my cart");
+      Console.WriteLine("[0] - Go back to the main menu");
+      int userInput2 = Convert.ToInt32(Console.ReadLine());
+
+      if (userInput2 == 1)
+      {
+        Console.WriteLine("What do you want to buy today?");
+        string item = Console.ReadLine();
+        Data.AddItemToCart(item);
+      }
+      else if (userInput2 == 2)
+      {
+        Console.WriteLine("Here are all item(s) you have in my cart:");
+        Data.DisplayCart();
+      }
+      else if (userInput2 == 3)
+      {
+        Console.WriteLine("Which item do you want to remove from your cart");
+        string item = Console.ReadLine();
+        Data.RemoveItemFromCart(item);
+      }
+      else if (userInput2 == 4)
+      {
+        Console.WriteLine("Which item do you want to look for from my cart");
+        string item = Console.ReadLine();
+        Data.SearchItemFromCart(item);
+      }
+      else if (userInput2 == 0)
+      {
+        Console.Clear();
+        repeatMenu2 = false;
+      }
+      else
+      {
+        Console.WriteLine("Please try the number in the menu");
+      }
+    }
+  }
+  //END Day 3 Activity
   else if (userInput == 0)
   {
     repeat = false;

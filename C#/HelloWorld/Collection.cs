@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace CollectionFunction
 {
   public class Collection
@@ -29,6 +31,7 @@ namespace CollectionFunction
 
     //Non-generic Collection
     //They store any datatype and have variable size
+    private ArrayList _nonGeneric = new ArrayList();
 
     public void CollectionMain()
     {
@@ -88,6 +91,13 @@ namespace CollectionFunction
 
       //Dictionary uses key to look up information from its store
       Console.WriteLine(_directory["Stephen"]);
+
+      Console.WriteLine("===Non-generic Collection===");
+      _nonGeneric.Add("Kira");
+      _nonGeneric.Add(1);
+      _nonGeneric.Add(true);
+      _nonGeneric.Add(10.80);
+
     }
   }
 }
