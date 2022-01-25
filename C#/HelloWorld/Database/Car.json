@@ -1,12 +1,1 @@
-[
-  {
-    "Color": "The color is Silver",
-    "Owner": "Kira",
-    "Fuel": 50
-  },
-  {
-    "Color": "The color is Silver",
-    "Owner": "Kira",
-    "Fuel": 50
-  }
-]
+[{"Color":"The color is Blue","Owner":"No Owner","Fuel":100}]
