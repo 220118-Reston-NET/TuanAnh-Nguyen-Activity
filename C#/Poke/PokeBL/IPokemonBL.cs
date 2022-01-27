@@ -16,6 +16,13 @@ namespace PokeBL
     /// <param name="p_poke"></param>
     /// <returns></returns>
     Pokemon AddPokemon(Pokemon p_poke);
+
+    /// <summary>
+    /// Will give a list of pokemon objects that are related to the searched name
+    /// </summary>
+    /// <param name="p_name">Name parameter being used to filter our pokemon</param>
+    /// <returns>Gives a filtered list of pokemon via a name</returns>
+    List<Pokemon> SearchPokemon(string p_name);
   }
 }
 

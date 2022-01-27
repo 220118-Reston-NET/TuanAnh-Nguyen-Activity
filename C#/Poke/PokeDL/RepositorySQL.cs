@@ -8,5 +8,10 @@ namespace PokeDL
     {
       throw new NotImplementedException();
     }
+
+    public List<Pokemon> GetAllPokemon()
+    {
+      throw new NotImplementedException();
+    }
   }
 }
