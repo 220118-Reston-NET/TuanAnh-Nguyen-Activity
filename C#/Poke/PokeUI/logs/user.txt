@@ -13,3 +13,7 @@ Health: 55
 2022-01-27 09:35:51.608 -05:00 [INF] Displaying SearchPokemon Menu to user
 2022-01-27 09:35:55.378 -05:00 [INF] Displaying MainMenu to user
 2022-01-27 09:35:56.470 -05:00 [INF] Exiting application
+2022-01-27 16:09:05.302 -05:00 [INF] Displaying AddPokemon Menu to user
+2022-01-27 16:09:09.946 -05:00 [INF] Displaying AddPokemon Menu to user
+2022-01-28 09:21:55.129 -05:00 [INF] Displaying SearchPokemon Menu to user
+2022-01-28 09:27:34.487 -05:00 [INF] Exiting application

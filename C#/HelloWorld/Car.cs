@@ -3,6 +3,8 @@ namespace CarFuntion
   public class Car
   {
     //Field
+    //It is used to stroe information od define the cureent state of the object when you first make it
+    //private means that only the class itself we can use that field
     private string _color;
     private string _owner;
     private int _fuel;
