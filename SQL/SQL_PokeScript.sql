@@ -247,5 +247,9 @@ INNER JOIN Pokemon p ON p.pokeId = pa.pokeId
 	-- Make sure that every column in that table is actually related to the data you are storing 
 	-- Ex: Pokemon table shouldn't have ability name, pp, acurracy but Ability should be created instead
 
-
+-- Show all the abilities of a pokemon
+SELECT abName FROM Pokemon p
+INNER JOIN Pokemon_abilities pa ON p.pokeId  = pa.pokeId 
+INNER JOIN Ability a ON a.abId  = pa.abId 
+WHERE p.pokeId = 1
 

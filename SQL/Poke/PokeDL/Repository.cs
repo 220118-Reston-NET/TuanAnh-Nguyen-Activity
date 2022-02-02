@@ -22,6 +22,11 @@ namespace PokeDL
       return p_poke;
     }
 
+    public List<Ability> GetAbilitiesByPokeId(int p_pokeId)
+    {
+      throw new NotImplementedException();
+    }
+
     public List<Pokemon> GetAllPokemon()
     {
       //Grab information from the JSON file and store it in a string

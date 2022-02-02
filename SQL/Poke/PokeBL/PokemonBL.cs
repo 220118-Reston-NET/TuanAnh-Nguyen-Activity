@@ -41,6 +41,16 @@ namespace PokeBL
       }
     }
 
+    public List<Ability> GetAbilitiesByPokeId(int p_pokeId)
+    {
+      return _repo.GetAbilitiesByPokeId(p_pokeId);
+    }
+
+    public List<Pokemon> GetAllPokemon()
+    {
+      return _repo.GetAllPokemon();
+    }
+
     public List<Pokemon> SearchPokemon(string p_name)
     {
       List<Pokemon> _listOfPokemon = _repo.GetAllPokemon();

@@ -12,10 +12,11 @@ namespace PokeUI
       Console.WriteLine("What would you like to do?");
       Console.WriteLine("[1] Add pokemon to your team");
       Console.WriteLine("[2] Search an existing Pokemon");
+      Console.WriteLine("[3] Get Abilities from Pokemon");
       Console.WriteLine("[0] Exit");
     }
 
-    public string UserChoice()
+    public MenuType UserChoice()
     {
       string userInput = Console.ReadLine();
 
@@ -23,17 +24,20 @@ namespace PokeUI
       switch (userInput)
       {
         case "0":
-          return "Exit";
+          return MenuType.Exit;
         case "1":
-          return "AddPokemon";
+          return MenuType.AddPoke;
         case "2":
-          return "SearchPokemon";
+          return MenuType.SearchPokemon;
+        case "3":
+          return MenuType.GetPokeAbility;
         default:
           Console.WriteLine("Please input a valid response");
           Console.WriteLine("Please press Enter to continue");
           Console.ReadLine();
-          return "MainMenu";
+          return MenuType.MainMenu;
       }
     }
+
   }
 }

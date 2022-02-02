@@ -1,5 +1,13 @@
 namespace PokeUI
 {
+  public enum MenuType
+  {
+    MainMenu,
+    Exit,
+    GetPokeAbility,
+    SearchPokemon,
+    AddPoke
+  }
   /*
       Interface are one of the best way to implement abstraction
       Every method is implicitly abstract meaning you don't have to write anything
@@ -16,6 +24,6 @@ namespace PokeUI
     /// Will record the user's choice and change/route your menu based on that choice
     /// </summary>
     /// <returns>Return the menu that will change your screen</returns>
-    string UserChoice();
+    MenuType UserChoice();
   }
 }
