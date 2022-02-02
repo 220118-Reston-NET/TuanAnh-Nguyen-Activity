@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 // using PokeModel;
 global using Serilog;
+using Microsoft.Extensions.Configuration;
 using PokeBL;
 using PokeDL;
 using PokeUI;
@@ -11,6 +12,14 @@ using PokeUI;
 
 //Creating and configuring our logger
 Log.Logger = new LoggerConfiguration().WriteTo.File("./logs/user.txt").CreateLogger();
+
+//Reading and obtaining connectionString from appsettings.json
+var configuration = new ConfigurationBuilder()
+                        .SetBasePath(Directory.GetCurrentDirectory())
+                        .AddJsonFile("appsettings.json")
+                        .Build();
+
+string _connectionString = configuration.GetConnectionString("Reference2DB");
 
 bool repeat = true;
 IMenu menu = new MainMenu();
@@ -25,11 +34,11 @@ while (repeat)
   {
     case "AddPokemon":
       Log.Information("Displaying AddPokemon Menu to user");
-      menu = new AddPokeMenu(new PokemonBL(new Repository()));
+      menu = new AddPokeMenu(new PokemonBL(new SQLRepository(_connectionString)));
       break;
     case "SearchPokemon":
       Log.Information("Displaying SearchPokemon Menu to user");
-      menu = new SearchPokemonMenu(new PokemonBL(new Repository()));
+      menu = new SearchPokemonMenu(new PokemonBL(new SQLRepository(_connectionString)));
       break;
     case "MainMenu":
       Log.Information("Displaying MainMenu to user");

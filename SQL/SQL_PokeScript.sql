@@ -177,7 +177,7 @@ INNER JOIN Finger f ON p.SSN = f.personSSN
 --You must create a join table to create many to many relationships 
 
 CREATE TABLE Ability(
-	abId int PRIMARY KEY,
+	abId int identity(1, 1) PRIMARY KEY,
 	abName varchar(50),
 	abPP int,
 	abPower int,
@@ -185,13 +185,14 @@ CREATE TABLE Ability(
 )
 
 INSERT INTO Ability
---VALUES(1, 'Tackle', 52, 55, 80),
-	VALUES	(2, 'Thunderbolt', 52, 55, 100)
+VALUES('Tackle', 52, 55, 80)
 
 DROP TABLE Pokemon
+DROP TABLE Ability
+DROP TABLE Pokemon_abilities
 
 CREATE TABLE Pokemon(
-	pokeId int PRIMARY KEY,
+	pokeId int identity(1, 1) PRIMARY KEY,
 	pokeName varchar(50),
 	pokeLevel int,
 	pokeAttack int,
@@ -199,20 +200,21 @@ CREATE TABLE Pokemon(
 	pokeHealth int,
 )
 
+SELECT * FROM Pokemon
+
 INSERT INTO Pokemon
-VALUES(1, 'Ditto', 10, 55, 52, 100),
-	(2, 'Bulbasuar', 10, 52, 58, 100)
+VALUES('Ditto', 10, 55, 52, 100)
 	
 
 CREATE TABLE Pokemon_abilities(
-	abId int FOREIGN KEY REFERENCES Ability(abId),
-	pokeId int FOREIGN KEY REFERENCES Pokemon(pokeId)
+	pokeId int FOREIGN KEY REFERENCES Pokemon(pokeId),
+	abId int FOREIGN KEY REFERENCES Ability(abId)
 )
 
 INSERT INTO Pokemon_abilities 
-VALUES (1, 1),
-		(1, 2),
-		(2, 2) 
+VALUES (1, 1)
+--		(1, 2),
+--		(2, 2) 
 		
 		
 SELECT a.abName, p.pokeName FROM Ability a 

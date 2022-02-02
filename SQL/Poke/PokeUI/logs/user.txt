@@ -17,3 +17,82 @@ Health: 55
 2022-01-27 16:09:09.946 -05:00 [INF] Displaying AddPokemon Menu to user
 2022-01-28 09:21:55.129 -05:00 [INF] Displaying SearchPokemon Menu to user
 2022-01-28 09:27:34.487 -05:00 [INF] Exiting application
+2022-02-01 17:02:18.013 -05:00 [INF] Displaying AddPokemon Menu to user
+2022-02-01 17:02:19.706 -05:00 [INF] Adding pokemon 
+Name: Ditto
+Level: 1
+Attack: 55
+Defense: 55
+Health: 55
+2022-02-01 17:02:19.712 -05:00 [WRN] Failed to add pokemon due to reaching total capacity (4)
+2022-02-01 17:02:21.385 -05:00 [INF] Displaying MainMenu to user
+2022-02-01 17:02:22.008 -05:00 [INF] Exiting application
+2022-02-01 17:16:47.262 -05:00 [INF] Displaying AddPokemon Menu to user
+2022-02-01 17:16:48.449 -05:00 [INF] Adding pokemon 
+Name: Ditto
+Level: 1
+Attack: 55
+Defense: 55
+Health: 55
+2022-02-01 17:16:49.186 -05:00 [WRN] Failed to add pokemon due to reaching total capacity (4)
+2022-02-01 17:16:58.080 -05:00 [INF] Displaying MainMenu to user
+2022-02-01 17:17:00.330 -05:00 [INF] Exiting application
+2022-02-01 17:18:20.642 -05:00 [INF] Displaying AddPokemon Menu to user
+2022-02-01 17:18:21.488 -05:00 [INF] Adding pokemon 
+Name: Ditto
+Level: 1
+Attack: 55
+Defense: 55
+Health: 55
+2022-02-01 17:18:22.593 -05:00 [WRN] Failed to add pokemon due to reaching total capacity (4)
+2022-02-01 17:18:35.285 -05:00 [INF] Displaying MainMenu to user
+2022-02-01 17:18:37.251 -05:00 [INF] Displaying MainMenu to user
+2022-02-01 17:18:38.418 -05:00 [INF] Exiting application
+2022-02-01 17:24:49.550 -05:00 [INF] Displaying AddPokemon Menu to user
+2022-02-01 17:24:51.484 -05:00 [INF] Adding pokemon 
+Name: Ditto
+Level: 1
+Attack: 55
+Defense: 55
+Health: 55
+2022-02-01 17:24:52.595 -05:00 [WRN] Failed to add pokemon due to reaching total capacity (4)
+2022-02-01 17:25:28.918 -05:00 [INF] Displaying AddPokemon Menu to user
+2022-02-01 17:25:30.322 -05:00 [INF] Adding pokemon 
+Name: Ditto
+Level: 1
+Attack: 55
+Defense: 55
+Health: 55
+2022-02-01 17:25:52.506 -05:00 [WRN] Failed to add pokemon due to reaching total capacity (4)
+2022-02-01 17:26:23.244 -05:00 [INF] Displaying AddPokemon Menu to user
+2022-02-01 17:26:26.531 -05:00 [INF] Adding pokemon 
+Name: Ditto
+Level: 1
+Attack: 55
+Defense: 55
+Health: 55
+2022-02-01 17:28:25.840 -05:00 [WRN] Failed to add pokemon due to reaching total capacity (4)
+2022-02-01 17:29:27.840 -05:00 [INF] Displaying AddPokemon Menu to user
+2022-02-01 17:31:39.702 -05:00 [INF] Adding pokemon 
+Name: Ditto
+Level: 1
+Attack: 55
+Defense: 55
+Health: 55
+2022-02-01 17:34:10.634 -05:00 [INF] Displaying AddPokemon Menu to user
+2022-02-01 17:34:11.963 -05:00 [INF] Adding pokemon 
+Name: Ditto
+Level: 1
+Attack: 55
+Defense: 55
+Health: 55
+2022-02-01 17:34:12.912 -05:00 [INF] Successful at adding pokemon!
+2022-02-01 17:34:12.912 -05:00 [INF] Displaying MainMenu to user
+2022-02-01 17:34:14.987 -05:00 [INF] Exiting application
+2022-02-01 17:36:22.448 -05:00 [INF] Displaying SearchPokemon Menu to user
+2022-02-01 17:36:58.537 -05:00 [INF] Displaying MainMenu to user
+2022-02-01 17:36:59.024 -05:00 [INF] Exiting application
+2022-02-02 10:50:44.210 -05:00 [INF] Displaying SearchPokemon Menu to user
+2022-02-02 10:51:18.532 -05:00 [INF] Displaying SearchPokemon Menu to user
+2022-02-02 10:51:22.113 -05:00 [INF] Displaying MainMenu to user
+2022-02-02 10:51:23.424 -05:00 [INF] Exiting application

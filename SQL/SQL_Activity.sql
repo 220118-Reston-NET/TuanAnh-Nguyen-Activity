@@ -108,9 +108,7 @@ INNER JOIN Saleman_Routes sr ON s.salemanId = sr.salemanId
 INNER JOIN Routes r ON sr.routeId  = r.routeId
 INNER JOIN Saleman_Products sp ON s.salemanId = sp.salemanId
 INNER JOIN Products p ON sp.productId = p.productId 
-WHERE r.routeName = 'IAH' AND p.productName = 'coffee' 
-	AND s.salemanId = sr.salemanId AND sr.routeId = r.routeId 
-	AND s.salemanId = sp.salemanId AND sp.productId = p.productId
+WHERE r.routeName = 'IAH' AND p.productName = 'coffee'
 
 -----------------------------------
 
@@ -151,4 +149,3 @@ FROM Salemans s,
 	) sri
 WHERE s.salemanId = spi.IDs AND s.salemanId = sri.IDs
 GROUP BY s.salemanName, s.phoneNumber, sri.Routes, spi.Products
-

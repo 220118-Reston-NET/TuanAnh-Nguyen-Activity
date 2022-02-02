@@ -2,6 +2,7 @@ namespace PokeModel
 {
   public class Pokemon
   {
+    public int PokeId { get; set; }
     public string Name { get; set; }
     public int Level { get; set; }
     public int Attack { get; set; }
