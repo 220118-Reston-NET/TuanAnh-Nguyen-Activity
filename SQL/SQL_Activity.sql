@@ -149,3 +149,145 @@ FROM Salemans s,
 	) sri
 WHERE s.salemanId = spi.IDs AND s.salemanId = sri.IDs
 GROUP BY s.salemanName, s.phoneNumber, sri.Routes, spi.Products
+
+
+
+
+
+--------
+---Create statement--
+create table Employee(
+	empId int identity(1,1) primary key,
+	empName varchar(50),
+	empSalary smallmoney
+);
+
+create table Department(
+	depId int identity(1,1) primary key,
+	depName varchar(50)
+);
+
+--Established relationships--
+create table employees_departments(
+	empId int foreign key references Employee(empId),
+	depId int foreign key references Department(depId)
+);
+
+--Inserting values--
+insert into Employee 
+values('John Doe', 65000),
+	('Ollie Abbott', 80000),
+	('Emanual Dean', 110000),
+	('Ernest Rowe', 55000),
+	('Janice Oliver', 65000);
+
+insert into Department
+values ('Software Engineer'),
+	('Manager');
+
+insert into employees_departments 
+values (1,1),
+	(2,1),
+	(3,2),
+	(4,1),
+	(5,1);
+------Aggregation functions ------
+--They are functions that will use all the data of a column to do some sort
+
+--Count
+--Will return how many rows there are in a column 
+SELECT Count(e.empName) FROM Employee e
+
+--SUM 
+--Will add all the numbers in a column
+SELECT Sum(e.empSalary) as 'Total Salaries' FROM Employee e 
+
+--Avg
+--Will average all the numbers in a column 
+SELECT Avg(e.empSalary) as 'Average Salary' FROM Employee e 
+
+--Min 
+--Grabs the lowest numnber in a column 
+
+
+--Max 
+--Grabs the highest number in a column
+
+--What if I want to show how many employess right now that have the same salary
+SELECT Count(e.empName) as 'Total Employees', e.empSalary FROM Employee e 
+GROUP BY e.empSalary 
+
+-- Subquery ----
+
+--I want to take all the average of all software engineer's salary 
+SELECT Avg(empSalary) as 'Average Salary of SE' FROM Employee e 
+INNER JOIN employees_departments ed ON e.empId = ed.empId
+INNER JOIN Department d ON d.depId = ed.depId
+WHERE d.depId = 1
+
+--I want to select every software engineer that have a higher than average salary
+SELECT e.empName, e.empSalary  FROM Employee e 
+INNER JOIN employees_departments ed ON e.empId = ed.empId
+INNER JOIN Department d ON d.depId = ed.depId
+WHERE d.depId = 1 and e.empSalary  > (SELECT Avg(empSalary) as 'Average Salary of SE' FROM Employee e 
+										INNER JOIN employees_departments ed ON e.empId = ed.empId
+										INNER JOIN Department d ON d.depId = ed.depId
+										WHERE d.depId = 1);
+
+						
+-- Joins ----
+									
+--Inner Join--
+--It will show data from both tables if they match the condition
+SELECT * FROM Employee e 
+INNER JOIN employees_departments ed ON e.empId = ed.empId 
+INNER JOIN Department d ON d.depId = ed.depId 
+									
+--Left Join
+--It will show everything from the left table even if they didn't match to anything on the right 
+SELECT * FROM Employee e 
+LEFT JOIN employees_departments ed ON e.empId = ed.empId 
+LEFT JOIN Department d ON d.depId = ed.depId
+
+--Right join 
+--It will show everything from the right table even if they didn't match to anything on the left table 
+SELECT * FROM Employee e 
+RIGHT JOIN employees_departments ed ON e.empId = ed.empId 
+RIGHT JOIN Department d ON d.depId = ed.depId
+
+--Full JOIN 
+--It will show everything from both tables regardless if they match or NOT 
+SELECT * FROM Employee e 
+FULL JOIN employees_departments ed ON e.empId = ed.empId 
+FULL JOIN Department d ON d.depId = ed.depId
+
+--Set Operations
+--Special type of JOIN 
+--It doesn't care about matching anything unlike a join 
+--It will combine two queries together but they need to be the same datatype and same # of column 
+
+--Union
+--It will only show duplicate value once
+SELECT e.empName as 'Union' FROM Employee e 
+UNION
+SELECT d.depName FROM Department d 
+
+SELECT d.depName FROM Department d 
+UNION
+SELECT d.depName FROM Department d 
+
+--Union all 
+--It will show duplicate value 
+--It will show everything from both queries 
+SELECT d.depName FROM Department d 
+UNION ALL
+SELECT d.depName FROM Department d 
+
+--Except 
+--It will show only unique values from the right query
+--It will not ashow duplicated values 
+SELECT d.depName FROM Department d 
+EXCEPT
+SELECT d.depName FROM Department d 
+
+--Intersection
