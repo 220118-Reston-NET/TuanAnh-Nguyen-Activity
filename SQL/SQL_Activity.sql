@@ -291,3 +291,80 @@ EXCEPT
 SELECT d.depName FROM Department d 
 
 --Intersection
+--It will show only duplicated values 
+SELECT d.depName FROM Department d 
+INTERSECT
+SELECT d.depName FROM Department d 
+
+
+
+------------------------------
+------Stored Procedure -------
+-- Almost like a function except it has certain unique things about 
+-- You can return multiple things unlike C# methods
+	-- It can accept input parameters and multiploe output parameters 
+-- It can output multiple datatypes
+-- You can have optional parameters 
+
+-- Add data depending on what was given
+CREATE PROCEDURE proc_addData(
+	@name varchar(50) = NULL,
+	@salary smallmoney = 10, -- By adding "=" I have made this parameter optional
+	@department varchar(50) = NULL,
+	@status bit OUTPUT--By adding output keyword, this parameter will return back after executing the procedure
+)
+AS 
+BEGIN 
+	--Adds data to Employee table if emplouee name was given
+	--When comparing with a null value, you have to use is/is not null
+	--When comparing with a normal value, you can use != or <>
+	IF (@name IS NOT NULL)
+	BEGIN 
+		INSERT INTO Employee
+		VALUES(@name, @salary);
+		SET @status = 1;
+	END
+	
+	IF (@department IS NOT NULL)
+	BEGIN 
+		INSERT INTO Department 
+		VALUES(@department);
+		SET @status = 1;
+	END
+	
+	--status fails if both optional parameters was not given
+	IF (@name IS NULL)
+	BEGIN 
+		IF(@department = NULL)
+		BEGIN 
+			SET @status = 0;
+		END
+	END
+END;
+
+DROP PROCEDURE proc_addData;
+
+DECLARE @currentStatus bit;
+DECLARE @moneys smallmoney = 100000.0000
+EXEC proc_addData @name = 'Jose', @salary = @moneys, @department = 'CEO', @status = @currentStatus OUTPUT
+SELECT @currentStatus;
+
+
+--- Triggers ----
+-- They are a special type of stored procedure
+-- They will run when a certain event happens such as insert, update, delete, or etc.
+
+--
+CREATE TRIGGER trig_employee_added ON Employee
+AFTER INSERT 
+AS
+BEGIN 
+	UPDATE Employee 
+	SET empSalary = empSalary - 1000;
+END;
+
+INSERT INTO Employee 
+VALUES('Terrance', 500);
+
+
+
