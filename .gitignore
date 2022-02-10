@@ -4,4 +4,4 @@ obj
 # macOS
 .DS_Store
 .vscode
-SQL/Poke/PokeUI/appsettings.json
+appsettings.json
