@@ -51,6 +51,11 @@ namespace PokeBL
       return _repo.GetAllPokemon();
     }
 
+    public async Task<List<Pokemon>> GetAllPokemonAsync()
+    {
+      return await _repo.GetAllPokemonAsync();
+    }
+
     public List<Pokemon> SearchPokemon(string p_name)
     {
       List<Pokemon> _listOfPokemon = _repo.GetAllPokemon();
@@ -58,6 +63,11 @@ namespace PokeBL
       //LINQ library
       return _listOfPokemon.Where(poke => poke.Name.Contains(p_name)).ToList();
 
+    }
+
+    public Pokemon UpdatePokemon(Pokemon p_poke)
+    {
+      return _repo.UpdatePokemon(p_poke);
     }
   }
 }

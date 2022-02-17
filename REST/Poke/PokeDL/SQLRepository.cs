@@ -18,7 +18,7 @@ namespace PokeDL
       //@ before the string will ignore sprcial characters like \n
       //This is where you specify the sql statement required to do whatever operation you need based on the method
       string _sqlQuery = @"INSERT INTO Pokemon
-                          VALUES (@pokeName, @pokeLevel, @pokeAttack, @pokeDefense, @pokeHealth)";
+                          VALUES (@pokeName, @pokeLevel, @pokeAttack, @pokeDefense, @pokeHealth);";
 
       //using block is different from our normal using statement 
       //It is used to automatically close any resource you stated inside of the parenthesis
@@ -77,7 +77,6 @@ namespace PokeDL
       }
       return listOfAbility;
     }
-
     public List<Pokemon> GetAllPokemon()
     {
       List<Pokemon> listOfPokemon = new List<Pokemon>();
@@ -115,6 +114,67 @@ namespace PokeDL
       }
 
       return listOfPokemon;
+    }
+
+    public async Task<List<Pokemon>> GetAllPokemonAsync()
+    {
+      List<Pokemon> listOfPokemon = new List<Pokemon>();
+
+      string sqlQuery = @"select * from Pokemon";
+
+      using (SqlConnection con = new SqlConnection(_connectionString))
+      {
+        //Opens connection to the database
+        await con.OpenAsync();
+
+        //Create command object that has our sqlQuery and con object
+        SqlCommand command = new SqlCommand(sqlQuery, con);
+
+        //SqlDataReader is a class specialized in reading outputs that came from a sql statement
+        //Usually this outputs are in a form of a table and keep that in mind
+        SqlDataReader reader = await command.ExecuteReaderAsync();
+
+        //Read() methods checks if you have more rows to go through
+        //If there is another row = true, if not = false
+        while (reader.Read())
+        {
+          listOfPokemon.Add(new Pokemon()
+          {
+            //Zero-based column index
+            PokeId = reader.GetInt32(0), //It will get column PokeId since that is the very first column of our select statement
+            Name = reader.GetString(1), //it will get the pokeName column since it is the second column of our select statement
+            Level = reader.GetInt32(2),
+            Attack = reader.GetInt32(3),
+            Defense = reader.GetInt32(4),
+            Health = reader.GetInt32(5),
+            Abilities = GetAbilitiesByPokeId(reader.GetInt32(0))
+          });
+        }
+      }
+
+      return listOfPokemon;
+    }
+
+    public Pokemon UpdatePokemon(Pokemon p_poke)
+    {
+      string sqlQuery = @"UPDATE Pokemon
+                            SET pokeName = @pokeName, pokeLevel = @pokeLevel, pokeAttack = @pokeAttack, pokeDefense = @pokeDefense, pokeHealth = @pokeHealth
+                            WHERE pokeId = @id;";
+
+      using (SqlConnection conn = new SqlConnection(_connectionString))
+      {
+        conn.Open();
+        SqlCommand command = new SqlCommand(sqlQuery, conn);
+
+        command.Parameters.AddWithValue("@pokeName", p_poke.Name);
+        command.Parameters.AddWithValue("@pokeLevel", p_poke.Level);
+        command.Parameters.AddWithValue("@pokeAttack", p_poke.Attack);
+        command.Parameters.AddWithValue("@pokeDefense", p_poke.Defense);
+        command.Parameters.AddWithValue("@pokeHealth", p_poke.Health);
+        command.ExecuteNonQuery();
+      }
+
+      return p_poke;
     }
   }
 }

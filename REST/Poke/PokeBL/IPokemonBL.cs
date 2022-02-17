@@ -29,8 +29,10 @@ namespace PokeBL
     /// </summary>
     /// <returns>List collection with pokemon objects</returns>
     List<Pokemon> GetAllPokemon();
+    Task<List<Pokemon>> GetAllPokemonAsync();
 
     List<Ability> GetAbilitiesByPokeId(int p_pokeId);
+    Pokemon UpdatePokemon(Pokemon p_poke);
   }
 }
 

@@ -23,6 +23,7 @@ namespace PokeDL
     /// </summary>
     /// <returns>Returns a list collection of Pokemon</returns>
     List<Pokemon> GetAllPokemon();
+    Task<List<Pokemon>> GetAllPokemonAsync();
 
     /// <summary>
     /// Will give a list of abilities from a pokemon
@@ -31,6 +32,12 @@ namespace PokeDL
     /// <returns>That hold the abilities </returns>
     List<Ability> GetAbilitiesByPokeId(int p_pokeId);
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="p_poke"></param>
+    /// <returns></returns>
+    Pokemon UpdatePokemon(Pokemon p_poke);
   }
 }
 

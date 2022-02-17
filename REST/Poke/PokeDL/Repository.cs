@@ -3,7 +3,7 @@ using PokeModel;
 
 namespace PokeDL
 {
-  public class Repository : IRepository
+  public class Repository
   {
     //Relative filepath is from the PokeUI since that is the starting point of our application
     private string _filepath = "../PokeDL/Database/";
