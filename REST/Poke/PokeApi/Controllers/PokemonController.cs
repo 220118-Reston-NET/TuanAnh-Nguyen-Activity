@@ -5,8 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-
+using Microsoft.Extensions.Caching.Memory;
 using PokeBL;
 using PokeModel;
 /*
@@ -38,9 +37,11 @@ namespace PokeApi.Controllers
   public class PokemonController : ControllerBase
   {
     private IPokemonBL _pokeBL;
-    public PokemonController(IPokemonBL p_pokeBL)
+    private IMemoryCache _memoryCache;
+    public PokemonController(IPokemonBL p_pokeBL, IMemoryCache memoryCache)
     {
       _pokeBL = p_pokeBL;
+      _memoryCache = memoryCache;
     }
 
     /*
@@ -52,7 +53,15 @@ namespace PokeApi.Controllers
     {
       try
       {
-        return Ok(await _pokeBL.GetAllPokemonAsync());
+        List<Pokemon> listOfPoke = new List<Pokemon>();
+        //TryGetValue(checks if the cache still exists and if it does "out listOfPoke" puts that data inside our variable)
+        if (!_memoryCache.TryGetValue("pokeList", out listOfPoke))
+        {
+          listOfPoke = await _pokeBL.GetAllPokemonAsync();
+          _memoryCache.Set("pokeList", listOfPoke, new TimeSpan(0, 0, 30));
+        }
+
+        return Ok(listOfPoke);
       }
       catch (SqlException)
       {
