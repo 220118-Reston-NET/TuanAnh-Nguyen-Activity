@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BasicJS</title>
+</head>
+<body>
+  <h1>Fundmentals of JS</h1>
+  <h3>Basic Function</h3>
+  <p>Using a button is a simple way to invoke a function in JS but any events can work</p>
+  <button onclick="basicFunction()">Basic Function</button>
+  <h3>Prototype Function</h3>
+  <p>Every function (and other things) has prototypes and you can add more properties inside of the prototies</p>
+  <button onclick="prototypeFunction()">Prototype Function</button>
+  <h3>Object</h3>
+  <p>Like objects in C# but it doesn't need a class to create one</p>
+  <button onclick="creatingObjects()">Object Function</button>
+  <h3>Classes</h3>
+  <p>Like classes in C# and is has OOP capabilities </p>
+  <button onclick="creatingClasses()">Classes Function</button>
+
+  <h3>DOM Demo</h3>
+  <p>Allows us to dynamically change our website </p>
+  <button onclick="Reveal()">DOM Function</button>
+  <span id="spanE" hidden style="color: red;">You just click the button!</span>
+
+  <script>
+    function basicFunction() {
+      console.log("This is similar to Console.WriteLine()");
+    }
+
+    function prototypeFunction() {
+      console.log(basicFunction.prototype);
+      prototypeFunction.prototype.anotherProperty = "Adding a new property in this function";
+      console.log(prototypeFunction.prototype);
+      console.log(basicFunction.prototype);
+      
+      console.log("Example of Prototypal Inheritance");
+      let animal = { color: "blue" };
+      let dog = { talk: "Bark" };
+      console.log(dog);
+      console.log(animal);
+      
+      console.log(dog.color);
+      dog.__proto__ = animal;
+      console.log(dog.color);
+      console.log(dog);
+    }
+
+    function creatingObjects() {
+      let dog = {
+        color: "Black",
+        size: 40,
+
+        speak: function() {
+          console.log("Bark Bark");
+        },
+        howBig: function() {
+          console.log("The dog is " + this.size + "lbs!");
+        }
+      }
+
+      console.log(dog);
+      dog.size = 192;
+      dog.speak();
+      dog.howBig();
+    }
+
+    function creatingClasses() {
+      class Animal {
+        constructor(name) {
+          this.name = name;
+        }
+
+        speak() {
+          console.log("Hello");
+        }
+      }
+
+      class Dog extends Animal{
+        //public field
+        color = "Black";
+
+        //private field
+        #size = 20;
+
+        constructor(color, size, name) {
+          super(name);
+          this.color = color;
+          this.#size = size;
+        }
+        
+        //Cannot do method overloading
+        speak() {
+          super.speak();
+          console.log("Bark Bark");
+          return 10;
+        }
+
+        howBig() {
+          console.log("The dog is " + this.size + "lbs");
+        }
+
+        get getSize(){
+          return this.#size + 10;
+        }
+      }
+
+      let dog1 = new Dog("blue", 50, "Minnie");
+      console.log(dog1);
+      dog1.speak();
+
+      console.log(dog1.speak());
+
+      console.log(dog1.color);
+      console.log(dog1.getSize);
+      console.log(dog1.name);
+    }
+
+    function Reveal() {
+      let spanElement = document.getElementById("spanE");
+      let span2 = document.querySelector("#spanE");
+      spanElement.innerHTML = "Changed the info!";  // This is a property to change the text inside of that element
+      console.log(spanElement);
+
+      spanElement.hidden = false;
+    }
+  </script>
+</body>
+</html>
