@@ -21,4 +21,8 @@ export class PokeService {
     pokeNameString = pokeNameString.toLowerCase();
     return this.http.get<PokeApi>(`https://pokeapi.co/api/v2/pokemon/${pokeNameString}`);
   }
+
+  addPokemon(pokemon:Pokemon) {
+    return this.http.post<Pokemon>("https://pokedemo.azurewebsites.net/api/Pokemon/Add", pokemon);
+  }
 }

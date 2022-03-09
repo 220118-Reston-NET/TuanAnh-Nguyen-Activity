@@ -1,0 +1,29 @@
+<form [formGroup]="pokeGroup" style="width: 15rem; margin-left: 2rem;">
+    <h1>Add a pokemon</h1>
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" formControlName="name">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Attack</label>
+        <input type="number" class="form-control" formControlName="attack">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Defense</label>
+        <input type="number" class="form-control" formControlName="defense">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Health</label>
+        <input type="number" class="form-control" formControlName="health">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Speed</label>
+        <input type="number" class="form-control" formControlName="speed">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Type</label>
+        <input type="string" class="form-control" formControlName="type">
+    </div>
+
+    <button (click)="addPokemon(pokeGroup)" type="submit" class="btn btn-primary">Submit</button>
+</form>
