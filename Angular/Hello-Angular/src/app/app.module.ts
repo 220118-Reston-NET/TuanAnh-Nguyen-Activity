@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { PokeProfileComponent } from './poke-profile/poke-profile.component';
 import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { StarComponent } from './star/star.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [ //This will hold our references to our components
@@ -17,7 +19,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     PokemonListComponent,
     TestComponent,
     NavBarComponent,
-    PokeProfileComponent
+    PokeProfileComponent,
+    StarComponent
   ],
   imports: [ //This will hold our references to modules inside our node_module folder
     BrowserModule,
@@ -25,10 +28,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FormsModule,
     RouterModule.forRoot([
       {path: "pokeList", component: PokemonListComponent},
-      {path: "profile", component: PokeProfileComponent},
+      {path: "profile/:pokename", component: PokeProfileComponent},
       {path: "", component: PokemonListComponent}, //Default component you want to show
       {path: "**", component: NotFoundComponent} //Wildcard for any endpoint that doesn't exist
-    ])
+    ]),
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

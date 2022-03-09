@@ -19,6 +19,7 @@
             <td>ID</td>
             <td>Name</td>
             <td>Level</td>
+            <td>Rating</td>
             <td [ngStyle] = "{color:isVisible ? 'black' : 'red'}">
                 Image
                 <button (click)="changeVisible()" class="btn btn-primary">Hide</button>
@@ -28,8 +29,12 @@
     <tbody>
         <tr *ngFor = "let pokemon of filteredListOfPoke">
             <td>{{pokemon.pokeId}}</td>
-            <td>{{pokemon.name | uppercase}}</td>
+            <td [routerLink]="['/profile', pokemon.name]" style="cursor: pointer;">{{pokemon.name}}</td>
             <td>{{pokemon.level}}</td>
+            <td>
+                <app-star [rating]="pokemon.rating" (ratingEmitter)="starEventWasTriggerd($event)"></app-star>
+                <span *ngIf="isRatingVisible" >{{pokemon.rating}}</span>
+            </td>
             <td>
                 <!-- <img *ngIf="isVisible" [src]="pokemon.sprites.front_default"> -->
             </td>

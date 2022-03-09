@@ -14,6 +14,7 @@ export class NavBarComponent implements OnInit {
   }
 
   goToProfile(){
+    //You must include router dependency to use the router class to navigate through your website using methods
     this.router.navigate(["/profile"]);
   }
 }

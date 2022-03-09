@@ -11,6 +11,7 @@ export class PokemonListComponent {
     title:string = "List of Pokemon";
     src1:string = "https://upload.wikimedia.org/wikipedia/en/3/35/Robert_Roberts_1905%E2%80%931974.jpg";
     isVisible:boolean = true;
+    isRatingVisible:boolean = false;
 
     filteredName:string = "";
 
@@ -26,16 +27,20 @@ export class PokemonListComponent {
         this.pokeServ.getAllPokemon("").subscribe(result => {
             //The result of a response is then stored in our listOfPokemon property
             // console.log(result);
+            result.forEach(poke => poke.rating = this.getRandomInt(5)); //Adds rating to pokemon since Db doesn't have it
             this.listOfPokemon = result;
             this.filteredListOfPoke = result;
         });
-        
+    }
+
+    getRandomInt(max:number){
+        return Math.floor(Math.random() * max);
     }
 
     changeTitle(){
         this.title = "Title has been changed!";
         this.src1 = "https://upload.wikimedia.org/wikipedia/commons/3/37/Corner_shop_-_geograph.org.uk_-_1100551.jpg";
-        this.listOfPokemon.push({level:64, pokeId:1, name:"Bulbasaur"});
+        // this.listOfPokemon.push({level:64, pokeId:1, name:"Bulbasaur"});
     }
 
     changeVisible(){
@@ -74,5 +79,10 @@ export class PokemonListComponent {
         tempListOfPoke = this.listOfPokemon.filter((pokemon:Pokemon) => pokemon.name.toLowerCase().indexOf(filter) != -1);
         
         return tempListOfPoke;
+    }
+
+    starEventWasTriggerd(num1:number){
+        console.log(num1);
+        this.isRatingVisible = !this.isRatingVisible;
     }
 }
