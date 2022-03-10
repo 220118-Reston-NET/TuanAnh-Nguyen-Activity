@@ -1,0 +1,62 @@
+[
+  {
+    "Name": "Ditto",
+    "Level": 1,
+    "Attack": 50,
+    "Defense": 51,
+    "Health": 52,
+    "Abilities": [
+      {
+        "Name": "Tackle",
+        "PP": 40,
+        "Power": 40,
+        "Accuracy": 80
+      }
+    ]
+  },
+  {
+    "Name": "Ditto",
+    "Level": 1,
+    "Attack": 45,
+    "Defense": 48,
+    "Health": 49,
+    "Abilities": [
+      {
+        "Name": "Tackle",
+        "PP": 40,
+        "Power": 40,
+        "Accuracy": 80
+      }
+    ]
+  },
+  {
+    "Name": "Bulbasaur",
+    "Level": 1,
+    "Attack": 52,
+    "Defense": 58,
+    "Health": 57,
+    "Abilities": [
+      {
+        "Name": "Tackle",
+        "PP": 40,
+        "Power": 40,
+        "Accuracy": 80
+      }
+    ]
+  },
+  {
+    "Name": "Pikachu",
+    "Level": 99999,
+    "Attack": 49,
+    "Defense": 53,
+    "Health": 60,
+    "Abilities": [
+      {
+        "Name": "Tackle",
+        "PP": 40,
+        "Power": 40,
+        "Accuracy": 80
+      }
+    ]
+  }
+]
