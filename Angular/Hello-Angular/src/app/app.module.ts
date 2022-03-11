@@ -26,7 +26,7 @@ import { AddPokeComponent } from './add-poke/add-poke.component';
   ],
   imports: [ //This will hold our references to modules inside our node_module folder
     BrowserModule,
-    HttpClientModule,
+    HttpClientModule, //Required module to include Http Requests
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([

@@ -24,7 +24,7 @@ export class PokemonListComponent {
         this.filteredListOfPoke = [];
 
         //getAllPokemon() methods gives an observable that has a subscrebe method to start the http requestand then handle x amount of responses
-        this.pokeServ.getAllPokemon("").subscribe(result => {
+        this.pokeServ.getAllPokemon().subscribe(result => {
             //The result of a response is then stored in our listOfPokemon property
             // console.log(result);
             result.forEach(poke => poke.rating = this.getRandomInt(5)); //Adds rating to pokemon since Db doesn't have it

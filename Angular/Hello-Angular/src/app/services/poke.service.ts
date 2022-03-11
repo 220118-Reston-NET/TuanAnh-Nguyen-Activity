@@ -11,9 +11,9 @@ export class PokeService {
 
   constructor(private readonly http:HttpClient) { }
 
-  getAllPokemon(somevar:string) : Observable<Pokemon[]>
+  getAllPokemon() : Observable<Pokemon[]>
   {
-    return this.http.get<Pokemon[]>(`https://pokedemo.azurewebsites.net/api/Pokemon/GetAll/${somevar}`);
+    return this.http.get<Pokemon[]>(`https://pokedemo.azurewebsites.net/api/Pokemon/GetAll`);
   }
 
   getPokeByName(pokeName:string | null) : Observable<PokeApi> {
